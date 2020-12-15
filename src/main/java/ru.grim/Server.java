@@ -19,7 +19,8 @@ public class Server {
 
 
     private Server(final ActorSystem actorSystem){
-        storeActor = actorSystem.actorOf(Props.create(StoreActor.class))
+        storeActor = actorSystem.actorOf(Props.create(StoreActor.class));
+
     }
 
     public static void main(String[] args){

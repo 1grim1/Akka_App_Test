@@ -1,2 +1,4 @@
-package ru.grim;public class StroreActor {
+package ru.grim;
+
+public class StroreActor {
 }

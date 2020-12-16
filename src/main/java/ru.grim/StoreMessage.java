@@ -1,5 +1,5 @@
 package ru.grim;
 
-public class StoreMassage {
+public class StoreMessage {
     ActorSystem
 }

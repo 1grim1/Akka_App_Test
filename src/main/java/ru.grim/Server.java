@@ -4,6 +4,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.server.Route;
 import akka.pattern.PatternsCS;
 import akka.routing.RoundRobinPool;
@@ -11,6 +12,8 @@ import akka.stream.ActorMaterializer;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.CompletionStage;
+
+import static akka.http.javadsl.server.Directives.completeOKWithFuture;
 
 public class Server {
 
@@ -23,6 +26,7 @@ public class Server {
     public static final int POOL_NUM = 6;
     public static final String ACTOR_PACKAGE_TEST = "actorPackageTest";
     public static final String ACTOR_PERFORMER = "actorPerformer";
+    public static final int TIME_OUT = 5000;
 
     private Server(final ActorSystem actorSystem){
         storeActor = actorSystem.actorOf(Props.create(StoreActor.class));
@@ -42,10 +46,13 @@ public class Server {
                         param("packageID", (packageID) ->{
                             CompletionStage<Object> result = PatternsCS.ask(
                                     storeActor,
-
+                                    new Message(Integer.parseInt(packageID)),
+                                    TIME_OUT);//5000
+                            return completeOKWithFuture(result, Jackson.marshaller());
                             )
-                        })
-                        )
+                        }),
+                        post(() -> entity(Jackson.unmarshaller()) )
+                )
         );
     }
 

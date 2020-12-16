@@ -1,2 +1,4 @@
-package ru.grim;public class Test {
+package ru.grim;
+
+public class Test {
 }

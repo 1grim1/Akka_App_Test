@@ -51,7 +51,10 @@ public class Server {
                             return completeOKWithFuture(result, Jackson.marshaller());
                             )
                         }),
-                        post(() -> entity(Jackson.unmarshaller()) )
+                        post(() -> entity(Jackson.unmarshaller(TestMessage.class), message -> {
+                            actorPackageTest.tell(message, ActorRef.noSender());
+                            return complete("Started test\n");
+                        }))
                 )
         );
     }

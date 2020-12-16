@@ -1,2 +1,4 @@
-package ru.grim;public class Message {
+package ru.grim;
+
+public class Message {
 }

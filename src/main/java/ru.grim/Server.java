@@ -7,6 +7,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.server.Route;
 import akka.pattern.PatternsCS;
 import akka.routing.RoundRobinPool;
+import akka.stream.ActorMaterializer;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.CompletionStage;
@@ -32,10 +33,20 @@ public class Server {
     public static void main(String[] args){
         ActorSystem actorSystem = ActorSystem.create("Actor_System");
         final Http http = Http.get(actorSystem);
+        final ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
     }
 
     private Route createRoute(){
-        return;
+        return route(
+                get(() ->
+                        param("packageID", (packageID) ->{
+                            CompletionStage<Object> result = PatternsCS.ask(
+                                    storeActor,
+
+                            )
+                        })
+                        )
+        );
     }
 
 }

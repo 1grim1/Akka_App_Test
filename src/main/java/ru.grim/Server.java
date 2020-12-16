@@ -31,7 +31,7 @@ public class Server {
 
     public static void main(String[] args){
         ActorSystem actorSystem = ActorSystem.create("Actor_System");
-        Http http = Http.get(actorSystem);
+        final Http http = Http.get(actorSystem);
     }
 
     private Route createRoute(){

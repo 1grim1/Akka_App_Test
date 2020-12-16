@@ -1,5 +1,6 @@
 package ru.grim;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.lang.reflect.Array;
@@ -16,12 +17,43 @@ public class TestMessage {
     private int packageID;
 
     @JsonProperty(FUNCTION_NAME)
-    private int functionName;
+    private String  functionName;
 
     @JsonProperty(JS_SCRIPT)
-    private int jsScript;
+    private String jsScript;
 
     @JsonProperty(TESTS_ARRAY)
     private ArrayList<Test> testsArray;
+
+    @JsonCreator
+    TestMessage(
+            @JsonProperty(PACKAGE_ID) int packageID,
+            @JsonProperty(FUNCTION_NAME) String functionName,
+            @JsonProperty(JS_SCRIPT) String jsScript,
+            @JsonProperty(TESTS_ARRAY) ArrayList<Test> testsArray)
+    {
+        this.packageID = packageID;
+        this.testsArray = testsArray;
+        this.functionName = functionName;
+        this.jsScript = jsScript;
+    }
+
+    //getters
+
+    public int getPackageID(){
+        return this.packageID;
+    }
+
+    public String getFunctionName(){
+        return this.functionName;
+    }
+
+    public String getJsScript(){
+        return this.jsScript;
+    }
+
+    public ArrayList<Test> getTestsArray(){
+        return this.testsArray;
+    }
 
 }

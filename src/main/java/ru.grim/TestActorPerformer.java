@@ -1,4 +1,10 @@
 package ru.grim;
 
-public class TestActorPerformer {
+import akka.actor.AbstractActor;
+
+public class TestActorPerformer extends AbstractActor {
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
 }

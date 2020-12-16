@@ -23,7 +23,7 @@ public class TestMessage {
     private String jsScript;
 
     @JsonProperty(TESTS_ARRAY)
-    private ArrayList<Test> testsArray;
+    private ArrayList<Test> testsList;
 
     @JsonCreator
     TestMessage(
@@ -33,7 +33,7 @@ public class TestMessage {
             @JsonProperty(TESTS_ARRAY) ArrayList<Test> testsArray)
     {
         this.packageID = packageID;
-        this.testsArray = testsArray;
+        this.testsList = testsArray;
         this.functionName = functionName;
         this.jsScript = jsScript;
     }
@@ -53,7 +53,7 @@ public class TestMessage {
     }
 
     public ArrayList<Test> getTestsArray(){
-        return this.testsArray;
+        return this.testsList;
     }
 
 }

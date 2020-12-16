@@ -9,11 +9,13 @@ import akka.http.javadsl.server.Route;
 import akka.pattern.PatternsCS;
 import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
+import akka.testkit.TestActor;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.Directives.completeOKWithFuture;
+import static akka.http.javadsl.server.Directives. *;
 
 public class Server {
 
@@ -31,7 +33,7 @@ public class Server {
     private Server(final ActorSystem actorSystem){
         storeActor = actorSystem.actorOf(Props.create(StoreActor.class));
         actorPackageTest = actorSystem.actorOf(Props.create(ActorPackageTest.class), ACTOR_PACKAGE_TEST);
-        performerActor =  actorSystem.actorOf(new RoundRobinPool(POOL_NUM).props(Props.create(ActorPerformer.class), ACTOR_PERFORMER));
+        performerActor =  actorSystem.actorOf(new RoundRobinPool(POOL_NUM).props(Props.create(TestActorPerformer.class), ACTOR_PERFORMER));
     }
 
     public static void main(String[] args){
@@ -43,20 +45,18 @@ public class Server {
     private Route createRoute(){
         return route(
                 get(() ->
-                        param("packageID", (packageID) ->{
+                        parameter("packageID", (packageID) ->{
                             CompletionStage<Object> result = PatternsCS.ask(
                                     storeActor,
                                     new Message(Integer.parseInt(packageID)),
                                     TIME_OUT);//5000
                             return completeOKWithFuture(result, Jackson.marshaller());
-                            )
-                        }),
+                        })),
                         post(() -> entity(Jackson.unmarshaller(TestMessage.class), message -> {
                             actorPackageTest.tell(message, ActorRef.noSender());
                             return complete("Started test\n");
                         }))
-                )
-        );
+                );
     }
 
 }

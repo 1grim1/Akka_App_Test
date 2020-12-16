@@ -54,7 +54,11 @@ public class Test {
     }
 
     public ArrayList<Integer> getParams(){
-        return this.params
+        return this.params;
+    }
+
+    public boolean getResult(){
+        return  this.result;
     }
 
 }

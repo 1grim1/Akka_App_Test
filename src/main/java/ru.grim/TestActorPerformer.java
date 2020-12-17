@@ -43,7 +43,7 @@ public class TestActorPerformer extends AbstractActor {
         Invocable invocable = (Invocable) engine;
         String result = invocable.invokeFunction(functionName, params.toArray()).toString();
 
-        Test test = new Test(testName, params, expectingResult, expectingResult.equals(result));
+        Test test = new Test(testName, expectingResult,params, expectingResult.equals(result));
         ArrayList<Test> currentTest = new ArrayList<Test>();
         currentTest.add(test);
         return currentTest;

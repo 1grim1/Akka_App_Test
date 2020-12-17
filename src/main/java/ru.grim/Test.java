@@ -14,11 +14,11 @@ public class Test {
     @JsonProperty(TEST_NAME)
     private String testName;
 
-    @JsonProperty(PARAMS)
-    private ArrayList<Integer> params;
-
     @JsonProperty(EXPECTED_RESULT)
     private String expectedResult;
+
+    @JsonProperty(PARAMS)
+    private ArrayList<Integer> params;
 
     @JsonProperty(RESULT)
     private boolean result;
@@ -26,8 +26,8 @@ public class Test {
     @JsonCreator
     public Test(
             @JsonProperty(TEST_NAME) String testName,
-            @JsonProperty(PARAMS) ArrayList<Integer> params,
-            @JsonProperty(EXPECTED_RESULT) String expectedResult
+            @JsonProperty(EXPECTED_RESULT) String expectedResult,
+            @JsonProperty(PARAMS) ArrayList<Integer> params
     )
     {
      this.testName = testName;
@@ -36,7 +36,7 @@ public class Test {
      this.result = false;
     }
 
-    public Test(String testName, ArrayList<Integer> params, String expectedResult, boolean result){
+    public Test(String testName,String expectedResult,  ArrayList<Integer> params, boolean result){
         this.result = result;
         this.testName = testName;
         this.expectedResult = expectedResult;

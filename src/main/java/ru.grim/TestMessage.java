@@ -11,7 +11,7 @@ public class TestMessage {
     public static final String PACKAGE_ID = "packageID";
     public static final String FUNCTION_NAME = "functionName";
     public static final String JS_SCRIPT = "jsScript";
-    public static final String TESTS_ARRAY = "testsArray";
+    public static final String TEST = "test";
 
     @JsonProperty(PACKAGE_ID)
     private int packageID;
@@ -22,18 +22,18 @@ public class TestMessage {
     @JsonProperty(JS_SCRIPT)
     private String jsScript;
 
-    @JsonProperty(TESTS_ARRAY)
-    private ArrayList<Test> testsList;
+    @JsonProperty(TEST)
+    private Test test;
 
     @JsonCreator
     TestMessage(
             @JsonProperty(PACKAGE_ID) int packageID,
             @JsonProperty(FUNCTION_NAME) String functionName,
             @JsonProperty(JS_SCRIPT) String jsScript,
-            @JsonProperty(TESTS_ARRAY) ArrayList<Test> testsArray)
+            @JsonProperty(TEST) Test test)
     {
         this.packageID = packageID;
-        this.testsList = testsArray;
+        this.test = test;
         this.functionName = functionName;
         this.jsScript = jsScript;
     }
@@ -52,8 +52,8 @@ public class TestMessage {
         return this.jsScript;
     }
 
-    public ArrayList<Test> getTestsArray(){
-        return this.testsList;
+    public Test getTest(){
+        return this.test;
     }
 
 }

@@ -10,7 +10,7 @@ public class TestMessage {
     private String  functionName;
     private String jsScript;
     private Test test;
-    
+
     TestMessage(int packageId, String functionName, String jsScript, Test test)
     {
         this.packageId = packageId;

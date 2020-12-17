@@ -1,12 +1,8 @@
 package ru.grim;
 
-
-
 public class TestMessage {
-
-
+    
     private int packageId;
-
     private String  functionName;
     private String jsScript;
     private Test test;

@@ -33,6 +33,7 @@ public class Test {
      this.testName = testName;
      this.expectedResult = expectedResult;
      this.params = params;
+     this.result = false;
     }
 
     public Test(String testName, ArrayList<Integer> params, String expectedResult, boolean result){

@@ -2,7 +2,6 @@ package ru.grim;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import scala.Int;
 
 import java.util.ArrayList;
 
@@ -19,7 +18,7 @@ public class Test {
     private ArrayList<Integer> params;
 
     @JsonProperty(EXPECTING_RESULT)
-    private String expectingResult;
+    private String expectedResult;
 
     @JsonProperty(RESULT)
     private boolean result;
@@ -28,18 +27,18 @@ public class Test {
     public Test(
             @JsonProperty(TEST_NAME) String testName,
             @JsonProperty(PARAMS) ArrayList<Integer> params,
-            @JsonProperty(EXPECTING_RESULT) String expectingResult
+            @JsonProperty(EXPECTING_RESULT) String expectedResult
     )
     {
      this.testName = testName;
-     this.expectingResult = expectingResult;
+     this.expectedResult = expectedResult;
      this.params = params;
     }
 
-    public Test(String testName, ArrayList<Integer> params, String expectingResult, boolean result){
+    public Test(String testName, ArrayList<Integer> params, String expectedResult, boolean result){
         this.result = result;
         this.testName = testName;
-        this.expectingResult = expectingResult;
+        this.expectedResult = expectedResult;
         this.params = params;
     }
 
@@ -49,8 +48,8 @@ public class Test {
         return this.testName;
     }
 
-    public String getExpectingResult(){
-        return this.expectingResult;
+    public String getExpectedResult(){
+        return this.expectedResult;
     }
 
     public ArrayList<Integer> getParams(){

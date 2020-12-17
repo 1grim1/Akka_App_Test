@@ -24,7 +24,7 @@ public class TestActorPerformer extends AbstractActor {
                                     testMessage.getJsScript(),
                                     testMessage.getFunctionName(),
                                     testMessage.getTest().getTestName(),
-                                    testMessage.getTest().getExpectingResult(),
+                                    testMessage.getTest().getExpectedResult(),
                                     testMessage.getTest().getParams())),
                             self());
                 })

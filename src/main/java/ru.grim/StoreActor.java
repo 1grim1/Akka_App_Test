@@ -16,13 +16,13 @@ public class StoreActor extends AbstractActor {
         return ReceiveBuilder
                 .create()
                 .match(StoreMessage.class, message -> {
-                    if (container.containsKey(message.getPackageID())){
-                        ArrayList<Test> currentTestArrayList = container.get(message.getPackageID());
+                    if (container.containsKey(message.getPackageId())){
+                        ArrayList<Test> currentTestArrayList = container.get(message.getPackageId());
                         currentTestArrayList.addAll(message.getTestsList());
-                        container.replace(message.getPackageID(), currentTestArrayList);
+                        container.replace(message.getPackageId(), currentTestArrayList);
                     }
                     else {
-                        container.put(message.getPackageID(), message.getTestsList());
+                        container.put(message.getPackageId(), message.getTestsList());
                     }
                 })
                 .match(Message.class, request -> {

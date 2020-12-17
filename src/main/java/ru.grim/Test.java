@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Test {
     public static final String TEST_NAME = "testName";
     public static final String PARAMS = "params";
-    public static final String EXPECTING_RESULT = "expectingResult";
+    public static final String EXPECTED_RESULT = "expectedResult";
     public static final String RESULT = "result";
 
     @JsonProperty(TEST_NAME)
@@ -17,7 +17,7 @@ public class Test {
     @JsonProperty(PARAMS)
     private ArrayList<Integer> params;
 
-    @JsonProperty(EXPECTING_RESULT)
+    @JsonProperty(EXPECTED_RESULT)
     private String expectedResult;
 
     @JsonProperty(RESULT)
@@ -27,7 +27,7 @@ public class Test {
     public Test(
             @JsonProperty(TEST_NAME) String testName,
             @JsonProperty(PARAMS) ArrayList<Integer> params,
-            @JsonProperty(EXPECTING_RESULT) String expectedResult
+            @JsonProperty(EXPECTED_RESULT) String expectedResult
     )
     {
      this.testName = testName;

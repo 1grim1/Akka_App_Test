@@ -59,12 +59,12 @@ public class Server {
           ConnectHttp.toHost(SERVER_NAME, PORT),
           actorMaterializer
         );
-
+        System.out.println("Starting server!");
         System.in.read();
         serverBindingCompletionStage
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> actorSystem.terminate());
-
+        System.out.println("End");
     }
 
     private Route createRoute(){

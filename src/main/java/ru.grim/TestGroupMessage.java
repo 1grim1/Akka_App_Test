@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class TestGroupMessage {
-    public static final String PACKAGE_ID = "packageID";
+    public static final String PACKAGE_ID = "packageId";
     public static final String FUNCTION_NAME = "functionName";
     public static final String JS_SCRIPT = "jsScript";
-    public static final String TEST = "test";
+    public static final String TESTS = "tests";
 
     @JsonProperty(PACKAGE_ID)
-    private int packageID;
+    private int packageId;
 
     @JsonProperty(FUNCTION_NAME)
     private String  functionName;
@@ -20,26 +20,26 @@ public class TestGroupMessage {
     @JsonProperty(JS_SCRIPT)
     private String jsScript;
 
-    @JsonProperty(TEST)
-    private ArrayList<Test> testsList;
+    @JsonProperty(TESTS)
+    private ArrayList<Test> tests;
 
     @JsonCreator
     TestGroupMessage(
-            @JsonProperty(PACKAGE_ID) int packageID,
+            @JsonProperty(PACKAGE_ID) int packageId,
             @JsonProperty(FUNCTION_NAME) String functionName,
             @JsonProperty(JS_SCRIPT) String jsScript,
-            @JsonProperty(TEST) ArrayList<Test> testsList)
+            @JsonProperty(TESTS) ArrayList<Test> tests)
     {
-        this.packageID = packageID;
-        this.testsList = testsList;
+        this.packageId = packageId;
+        this.tests = tests;
         this.functionName = functionName;
         this.jsScript = jsScript;
     }
 
     //getters
 
-    public int getPackageID(){
-        return this.packageID;
+    public int getPackageId(){
+        return this.packageId;
     }
 
     public String getFunctionName(){
@@ -50,8 +50,8 @@ public class TestGroupMessage {
         return this.jsScript;
     }
 
-    public ArrayList<Test> getTestsList(){
-        return this.testsList;
+    public ArrayList<Test> getTests(){
+        return this.tests;
     }
 
 }

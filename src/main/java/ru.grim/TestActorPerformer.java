@@ -19,7 +19,7 @@ public class TestActorPerformer extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(TestMessage.class, testMessage -> {
-                    actorSelection.tell(new StoreMessage(testMessage.getPackageID(),
+                    actorSelection.tell(new StoreMessage(testMessage.getPackageId(),
                             runTest(
                                     testMessage.getJsScript(),
                                     testMessage.getFunctionName(),

@@ -1,14 +1,14 @@
 package ru.grim;
 
 public class Message {
-    private int packageID;
+    private int packageId;
 
-    public Message(int packageID){
-        this.packageID = packageID;
+    public Message(int packageId){
+        this.packageId = packageId;
     }
 
     public int getPackageID(){
-        return this.packageID;
+        return this.packageId;
     }
 
 }

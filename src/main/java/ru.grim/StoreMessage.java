@@ -6,29 +6,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class StoreMessage {
-    public static final String PACKAGE_ID = "packageID";
-    public static final String TESTS_LIST = "testsList";
+    public static final String PACKAGE_ID = "packageId";
+    public static final String TESTS = "tests";
 
     @JsonProperty(PACKAGE_ID)
-    private int packageID;
+    private int packageId;
 
-    @JsonProperty(TESTS_LIST)
+    @JsonProperty(TESTS)
     private ArrayList<Test> testsList;
 
     @JsonCreator
     public StoreMessage(
-            @JsonProperty(PACKAGE_ID) int packageID,
-            @JsonProperty(TESTS_LIST) ArrayList<Test> testsList
+            @JsonProperty(PACKAGE_ID) int packageId,
+            @JsonProperty(TESTS) ArrayList<Test> testsList
     )
     {
-        this.packageID = packageID;
+        this.packageId = packageId;
         this.testsList = testsList;
     }
 
     //getters
 
-    public int getPackageID(){
-        return this.packageID;
+    public int getPackageId(){
+        return this.packageId;
     }
 
 

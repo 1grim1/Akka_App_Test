@@ -1,7 +1,6 @@
 package ru.grim;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class TestMessage {
 
@@ -11,8 +10,7 @@ public class TestMessage {
     private String  functionName;
     private String jsScript;
     private Test test;
-
-    @JsonCreator
+    
     TestMessage(int packageId, String functionName, String jsScript, Test test)
     {
         this.packageId = packageId;

@@ -7,18 +7,18 @@ import java.util.ArrayList;
 
 public class StoreMessage {
     public static final String PACKAGE_ID = "packageId";
-    public static final String TESTS = "tests";
+    public static final String TEST = "test";
 
     @JsonProperty(PACKAGE_ID)
     private int packageId;
 
-    @JsonProperty(TESTS)
+    @JsonProperty(TEST)
     private ArrayList<Test> testsList;
 
     @JsonCreator
     public StoreMessage(
             @JsonProperty(PACKAGE_ID) int packageId,
-            @JsonProperty(TESTS) ArrayList<Test> testsList
+            @JsonProperty(TEST) ArrayList<Test> testsList
     )
     {
         this.packageId = packageId;

@@ -70,7 +70,7 @@ public class Server {
     private Route createRoute(){
         return route(
                 get(() ->
-                        parameter("packageID", (packageID) ->{
+                        parameter("packageId", (packageID) ->{
                             CompletionStage<Object> result = PatternsCS.ask(
                                     storeActor,
                                     new Message(Integer.parseInt(packageID)),

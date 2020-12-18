@@ -77,7 +77,7 @@ public class Server {
                                     TIME_OUT);//5000
                             return completeOKWithFuture(result, Jackson.marshaller());
                         })),
-                        post(() -> entity(Jackson.unmarshaller(TestMessage.class), message -> {
+                        post(() -> entity(Jackson.unmarshaller(TestGroupMessage.class), message -> {
                             actorPackageTest.tell(message, ActorRef.noSender());
                             return complete("Started test\n");
                         }))
